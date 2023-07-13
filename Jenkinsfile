@@ -1,17 +1,16 @@
 pipeline {
     agent any
 
-    environment {
-        BUILD_NUMBER = env.BUILD_NUMBER
-        RUN_ARTIFACT_DIR = "tests/${BUILD_NUMBER}"
-        SFDC_USERNAME = "krishna01sai@gmail.com"
-        HUB_ORG = env.HUB_ORG_DH
-        SFDC_HOST = env.SFDC_HOST_DH
-        JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
-        CONNECTED_APP_CONSUMER_KEY = env.CONNECTED_APP_CONSUMER_KEY_DH
-    }
-
-    stages {
+environment {
+    BUILD_NUMBER = "${env.BUILD_NUMBER}"
+    RUN_ARTIFACT_DIR = "tests/${env.BUILD_NUMBER}"
+    SFDC_USERNAME = ""
+    HUB_ORG = "${env.HUB_ORG_DH}"
+    SFDC_HOST = "${env.SFDC_HOST_DH}"
+    JWT_KEY_CRED_ID = "${env.JWT_CRED_ID_DH}"
+    CONNECTED_APP_CONSUMER_KEY = "${env.CONNECTED_APP_CONSUMER_KEY_DH}"
+}
+   stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/your/repository.git'
