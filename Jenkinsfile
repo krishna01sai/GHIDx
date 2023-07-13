@@ -30,7 +30,7 @@ node {
                 rc = sh returnStatus: true, script: "${toolbelt} force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
           		// bat "${toolbelt} update"
 	    }else{
-                 rc = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+                 rc = bat returnStatus: true, script: "\"${toolbelt}\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
            	// bat "${toolbelt} update"
 	    
 	    }
@@ -47,14 +47,14 @@ node {
 			// need to pull out assigned username
 			if (isUnix()) {
 				//rmsg = sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/. -u ${HUB_ORG}"
-				rmsg = sh returnStdout: true, script: "${toolbelt} force:project:deploy:start -x manifest/package.xml -u ${HUB_ORG}"
+				rmsg = sh returnStdout: true, script: "${toolbelt} sfdx force:project:deploy:start -x manifest/package.xml -u ${HUB_ORG}"
 				//rmsg = sh returnStdout: true, script: "${toolbelt} force:project:deploy:start -p manifest/ -u ${HUB_ORG}"
 				//rmsg = sh returnStdout: true, script: "${toolbelt} force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
 
 				
 			}else{
 			  	// rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:mdapi:deploy -d manifest/. -u ${HUB_ORG}"
-				rmsg = bat returnStdout: true, script: "${toolbelt} force:project:deploy:start -x manifest/package.xml -u ${HUB_ORG}"
+				rmsg = bat returnStdout: true, script: "${toolbelt} sfdx force:project:deploy:start -x manifest/package.xml -u ${HUB_ORG}"
 				//rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:project:deploy:start -p manifest/ -u ${HUB_ORG}"
 				//rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:source:deploy --manifest manifest/package.xml -u ${HUB_ORG}"
 
