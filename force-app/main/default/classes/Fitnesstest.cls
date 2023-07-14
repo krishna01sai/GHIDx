@@ -8,5 +8,5 @@ public class Fitnesstest {
       Decimal  d = Fitness.calculateBmi(bodyWeight,bodyHeight);
         system.assertNotEquals(20.5, d,'A not equals to b');
     }
-
+//firstdeploy
 }
